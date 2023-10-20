@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Pràctica1</string>
+    <string name="return_menu">tornar menu\n</string>
+    <string name="CreaturesList" />
+    <string name="mecnu" />
+</resources>
