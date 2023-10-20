@@ -96,8 +96,8 @@ fun CharacterList(navController: NavController) {
 fun CharacterItem(character: Character) {
 
     val backgroundResource = when (character.race) {
-        "Human" -> R.drawable.hobbit
-        "Humans" -> R.drawable.hobbit
+        "Human" -> R.drawable.human
+        "Humans" -> R.drawable.human
         "Hobbit" -> R.drawable.hobbit
         "Elf" -> R.drawable.hobbit
         "Elves" -> R.drawable.hobbit
