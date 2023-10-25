@@ -1,34 +1,44 @@
 package com.example.prctica1.viewmodel
 
-
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.prctica1.data.model.Character
-import com.example.prctica1.data.model.CharactersResponse
-import com.example.prctica1.data.remote.ApiService
 import com.example.prctica1.data.remote.RetrofitClient
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class YourViewModel : ViewModel() {
+
+    private val token = "Bearer fdPKI_bVDia5WrB8EZcV"
     suspend fun fetchData(): List<Character>? {
-        val token = "Bearer fdPKI_bVDia5WrB8EZcV"
-        try {
+        return try {
             val response = RetrofitClient.getCharacters(token)
             if (response.isSuccessful) {
                 val charactersResponse = response.body()
-                return charactersResponse?.docs
+                charactersResponse?.docs
             } else {
                 // Handle error response
-                return null
+                null
             }
         } catch (e: Exception) {
             // Handle exception
-            return null
+            null
+        }
+    }
+    suspend fun fetchCharacterById(characterId: String?): Character? {
+        return try {
+            val response = RetrofitClient.getCharacterById(token, characterId)
+            if (response.isSuccessful) {
+                val charactersResponse = response.body()
+                val characterList = charactersResponse?.docs
+                if (!characterList.isNullOrEmpty()) {
+                    characterList[0]
+                } else {
+                    null
+                }
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
         }
     }
 }
