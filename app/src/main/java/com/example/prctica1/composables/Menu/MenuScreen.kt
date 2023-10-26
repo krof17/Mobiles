@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,11 +22,13 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.prctica1.LotrScreens
 import com.example.prctica1.composables.Menu.components.MenuButton
 import com.example.prctica1.R
 
 @Composable
-fun MenuScreen(onCreaturesButtonClick: () -> Unit) {
+fun MenuScreen(onCreaturesButtonClick: () -> Unit, navigate : NavController) {
     val letterSpacing = with(LocalDensity.current) {
         dimensionResource(R.dimen.text_letter_spacing).toSp()
     }
@@ -58,6 +62,33 @@ fun MenuScreen(onCreaturesButtonClick: () -> Unit) {
                     )
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.text_letter_spacing)))
                 MenuButton(onCreaturesButtonClick, text = "Criaturas fantásticas")
+                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
+                //MenuButton(onMenuButtonClick = { /*TODO*/ }, text = "Tipos de criaturas")
+            }
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            )
+            {
+                Text(
+                    text = "Buscar por tipo de criatura",
+                    //letterSpacing = letterSpacing,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(top = 45.dp)
+                )
+                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.text_letter_spacing)))
+                Button(
+                    onClick = { navigate.navigate(LotrScreens.RaceList.name)},
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier.height(40.dp)
+                ) {
+                    Text(
+                        text = "Buscar por raza",
+                        style = MaterialTheme.typography.labelSmall,
+                    )
+                }
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
                 //MenuButton(onMenuButtonClick = { /*TODO*/ }, text = "Tipos de criaturas")
             }
