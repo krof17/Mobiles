@@ -11,9 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraph
 import androidx.navigation.compose.rememberNavController
 import com.example.prctica1.ui.theme.Pràctica1Theme
+import com.example.prctica1.viewmodel.YourViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val viewModel = YourViewModel()
         super.onCreate(savedInstanceState)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
@@ -26,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    NavGraph(navController)
+                    NavGraph(navController,viewModel)
                 }
             }
         }

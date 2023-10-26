@@ -1,5 +1,7 @@
 package com.example.prctica1.data.model
 
+import android.os.Parcelable
+
 data class Character(
     val _id: String,
     val height: String?,
