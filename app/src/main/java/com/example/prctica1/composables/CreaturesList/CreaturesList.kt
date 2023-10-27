@@ -104,11 +104,18 @@ fun CharacterItem(character: Character, navController: NavController) {
         "Human" -> R.drawable.human
         "Humans" -> R.drawable.human
         "Hobbit" -> R.drawable.hobbit
-        "Elf" -> R.drawable.hobbit
-        "Elves" -> R.drawable.hobbit
-        "Dwarf" -> R.drawable.hobbit
+        "Elf" -> R.drawable.elfs
+        "Elves" -> R.drawable.elfs
+        "Dwarf" -> R.drawable.dwarfs
         "Ent" -> R.drawable.ents
         "Ents" -> R.drawable.ents
+        "Maiar" -> R.drawable.maiar
+        "Dragon" -> R.drawable.dragons
+        "Dragons" -> R.drawable.dragons
+        "Orc" -> R.drawable.orcs
+        "Orcs" -> R.drawable.orcs
+        "Great Spiders" -> R.drawable.spider
+        "God" -> R.drawable.god
         else -> R.drawable.hobbit
     }
 

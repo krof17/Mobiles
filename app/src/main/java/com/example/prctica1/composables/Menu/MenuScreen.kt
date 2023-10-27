@@ -63,6 +63,8 @@ fun MenuScreen(onCreaturesButtonClick: () -> Unit, navigate : NavController) {
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.text_letter_spacing)))
                 MenuButton(onCreaturesButtonClick, text = "Criaturas fantásticas")
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
+                MenuButton(onCreaturesButtonClick, text = "Buscar nombre")
+                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
                 //MenuButton(onMenuButtonClick = { /*TODO*/ }, text = "Tipos de criaturas")
             }
 

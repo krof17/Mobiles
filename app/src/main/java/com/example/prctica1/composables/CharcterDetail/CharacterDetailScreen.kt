@@ -39,7 +39,19 @@ fun CharacterDetail(character: Character?, navController: NavController){
 
     val backgroundResource = when (character?.name) {
         "Gandalf" -> R.drawable.gandalf3
-        "Saruman" -> R.drawable.saruman
+        "Saruman" -> R.drawable.saruman2
+        "Aragorn II Elessar" -> R.drawable.aragorn
+        "Boromir" -> R.drawable.boromir
+        "Legolas" -> R.drawable.legolas
+        "Arwen" -> R.drawable.arwen
+        "Gimli" -> R.drawable.gimli
+        "Thorin II Oakenshield" -> R.drawable.thorin
+        "Treebeard" -> R.drawable.treebeard
+        "Gollum" -> R.drawable.gollum
+        "Smaug" -> R.drawable.smaug
+        "Azog" -> R.drawable.azog
+        "Shelob" -> R.drawable.shelob
+        "Eru Ilúvatar" -> R.drawable.eru
         else -> R.drawable.gandalf
     }
     Box(modifier = Modifier
