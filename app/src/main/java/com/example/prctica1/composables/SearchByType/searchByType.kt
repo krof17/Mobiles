@@ -88,7 +88,6 @@ fun SearchScreen(characters: List<Character>?, navController: NavController) {
     Column(
         modifier = Modifier.padding(16.dp),
     ) {
-        // Condición para mostrar u ocultar la barra de búsqueda
         if (showRaceButtons) {
             OutlinedTextField(
                 value = searchText,
@@ -105,13 +104,12 @@ fun SearchScreen(characters: List<Character>?, navController: NavController) {
             Text("Nombres de Razas:", fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(4.dp))
 
-            // Lista de nombres de razas debajo del buscador siempre
             Column {
                 matchingRaces.forEach { race ->
                     Button(
                         onClick = {
                             selectedRace = race
-                            showRaceButtons = false // Oculta los botones de razas
+                            showRaceButtons = false
                         },
                         modifier = Modifier
                             .fillMaxWidth()
@@ -126,7 +124,6 @@ fun SearchScreen(characters: List<Character>?, navController: NavController) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Muestra la lista de razas si se ha seleccionado una
         if (selectedRace != null) {
             if (characters != null) {
                 RaceList(characters, selectedRace ?: "", navController)
