@@ -33,7 +33,6 @@ fun MenuScreen(onCreaturesButtonClick: () -> Unit, navigate : NavController) {
         dimensionResource(R.dimen.text_letter_spacing).toSp()
     }
 
-
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -63,24 +62,17 @@ fun MenuScreen(onCreaturesButtonClick: () -> Unit, navigate : NavController) {
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.text_letter_spacing)))
                 MenuButton(onCreaturesButtonClick, text = "Criaturas fantásticas")
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
-                MenuButton(onCreaturesButtonClick, text = "Buscar nombre")
+                Button(
+                    onClick = { navigate.navigate(LotrScreens.SearchByName.name)},
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier.height(40.dp)
+                ) {
+                    Text(
+                        text = "Buscar por nombre",
+                        style = MaterialTheme.typography.labelSmall,
+                    )
+                }
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
-                //MenuButton(onMenuButtonClick = { /*TODO*/ }, text = "Tipos de criaturas")
-            }
-
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            )
-            {
-                Text(
-                    text = "Buscar por tipo de criatura",
-                    //letterSpacing = letterSpacing,
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(top = 45.dp)
-                )
-                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.text_letter_spacing)))
                 Button(
                     onClick = { navigate.navigate(LotrScreens.RaceList.name)},
                     shape = RoundedCornerShape(8.dp),
@@ -91,8 +83,6 @@ fun MenuScreen(onCreaturesButtonClick: () -> Unit, navigate : NavController) {
                         style = MaterialTheme.typography.labelSmall,
                     )
                 }
-                Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_large)))
-                //MenuButton(onMenuButtonClick = { /*TODO*/ }, text = "Tipos de criaturas")
             }
         }
     }

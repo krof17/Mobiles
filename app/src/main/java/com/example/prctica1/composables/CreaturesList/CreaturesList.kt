@@ -1,6 +1,5 @@
 package com.example.prctica1.composables.CreaturesList
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -19,6 +18,7 @@ import androidx.compose.material.icons.filled.ChevronLeft
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -64,35 +64,13 @@ fun CharacterList(navController: NavController) {
         )
         if (charactersResponse != null) {
             val characters = charactersResponse
-
-            /*
-            val distinctRaces = characters.map { it.race }.distinct()
-            LazyColumn {
-                distinctRaces.forEach { race ->
-                    val characterOfRace = characters.first { it.race == race }
-                    Log.d("Race","$race")
-                    item {
-                        Text(
-                            text = "Race: $race",
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                            modifier = Modifier.padding(16.dp)
-                        )
-                    }
-
-                    item {
-                        CharacterItem(characterOfRace, navController)
-                    }
-                }
-            }
-            */
             LazyColumn {
                 items(characters) { character ->
                     CharacterItem(character, navController)
                 }
             }
         } else {
-            Text("Loading data...")
+            LinearProgressIndicator()
         }
     }
 }

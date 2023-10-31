@@ -1,8 +1,6 @@
 package com.example.prctica1.composables.SearchByType
 
-import android.widget.ArrayAdapter
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,33 +15,27 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
-
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronLeft
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,19 +43,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.prctica1.LotrScreens
 import com.example.prctica1.R
-import com.example.prctica1.composables.CreaturesList.CharacterItem
 import com.example.prctica1.data.model.Character
 import com.example.prctica1.viewmodel.YourViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun searchByType(navController: NavController) {
     val viewModel: YourViewModel = viewModel()
     val charactersResponseState by produceState<List<Character>?>(initialValue = null) {
-        value = viewModel.fetchData()
+        value = viewModel.fetchAllData()
     }
 
     Column {
@@ -79,7 +67,6 @@ fun searchByType(navController: NavController) {
             },
             title = { Text("Buscador", style = MaterialTheme.typography.bodyLarge) }
         )
-
         SearchScreen(characters = charactersResponseState, navController)
     }
 }
@@ -152,7 +139,6 @@ fun SearchScreen(characters: List<Character>?, navController: NavController) {
 @Composable
 fun RaceList(characters: List<Character>, selectedRace: String, navController: NavController) {
 
-
     val filteredCharacters = characters.filter { it.race == selectedRace }
 
     if (filteredCharacters.isNotEmpty()) {
@@ -167,11 +153,18 @@ fun RaceList(characters: List<Character>, selectedRace: String, navController: N
                     "Human" -> R.drawable.human
                     "Humans" -> R.drawable.human
                     "Hobbit" -> R.drawable.hobbit
-                    "Elf" -> R.drawable.hobbit
-                    "Elves" -> R.drawable.hobbit
-                    "Dwarf" -> R.drawable.hobbit
+                    "Elf" -> R.drawable.elfs
+                    "Elves" -> R.drawable.elfs
+                    "Dwarf" -> R.drawable.dwarfs
                     "Ent" -> R.drawable.ents
                     "Ents" -> R.drawable.ents
+                    "Maiar" -> R.drawable.maiar
+                    "Dragon" -> R.drawable.dragons
+                    "Dragons" -> R.drawable.dragons
+                    "Orc" -> R.drawable.orcs
+                    "Orcs" -> R.drawable.orcs
+                    "Great Spiders" -> R.drawable.spider
+                    "God" -> R.drawable.god
                     else -> R.drawable.hobbit
                 }
 

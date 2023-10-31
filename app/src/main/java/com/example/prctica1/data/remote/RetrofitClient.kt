@@ -1,6 +1,5 @@
 package com.example.prctica1.data.remote
 
-import com.example.prctica1.data.model.Character
 import com.example.prctica1.data.model.CharactersResponse
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -18,6 +17,9 @@ object RetrofitClient {
 
     suspend fun getCharacters(token: String): Response<CharactersResponse> {
         return apiService.getCharacters(token)
+    }
+    suspend fun getAllCharacters(token: String): Response<CharactersResponse> {
+        return apiService.getAllCharacters(token)
     }
     suspend fun getCharacterById(token: String, characterId: String?): Response<CharactersResponse> {
         return apiService.getCharacterById(token, characterId)

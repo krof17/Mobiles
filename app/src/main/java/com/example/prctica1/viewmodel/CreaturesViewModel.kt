@@ -1,6 +1,5 @@
 package com.example.prctica1.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.prctica1.data.model.Character
 import com.example.prctica1.data.remote.RetrofitClient
@@ -11,6 +10,21 @@ class YourViewModel : ViewModel() {
     suspend fun fetchData(): List<Character>? {
         return try {
             val response = RetrofitClient.getCharacters(token)
+            if (response.isSuccessful) {
+                val charactersResponse = response.body()
+                charactersResponse?.docs
+            } else {
+                // Handle error response
+                null
+            }
+        } catch (e: Exception) {
+            // Handle exception
+            null
+        }
+    }
+    suspend fun fetchAllData(): List<Character>? {
+        return try {
+            val response = RetrofitClient.getAllCharacters(token)
             if (response.isSuccessful) {
                 val charactersResponse = response.body()
                 charactersResponse?.docs

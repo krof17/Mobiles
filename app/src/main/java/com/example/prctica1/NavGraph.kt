@@ -13,6 +13,7 @@ import com.example.prctica1.composables.CharcterDetail.CharacterDetail
 import com.example.prctica1.composables.CreaturesList.CharacterList
 import com.example.prctica1.composables.Menu.MenuScreen
 import com.example.prctica1.composables.SearchByType.searchByType
+import com.example.prctica1.composables.SearchByname.SerachName
 import com.example.prctica1.data.model.Character
 import com.example.prctica1.data.model.CharactersResponse
 import com.example.prctica1.data.remote.RetrofitClient.getCharacterById
@@ -22,7 +23,8 @@ enum class LotrScreens(@StringRes val title: Int){
     Menu(title = R.string.mecnu),
     CreaturesList(title = R.string.CreaturesList),
     CreatureDetail(title = R.string.creatureDetail),
-    RaceList(title = R.string.RaceList)
+    RaceList(title = R.string.RaceList),
+    SearchByName(title = R.string.SearchName)
 }
 
 @Composable
@@ -38,6 +40,9 @@ fun NavGraph (navController: NavHostController, viewModel: YourViewModel){
         }
         composable(route = LotrScreens.CreaturesList.name){
             CharacterList(navController)
+        }
+        composable(route = LotrScreens.SearchByName.name){
+            SerachName(navController)
         }
         composable(route = LotrScreens.RaceList.name){
             searchByType(navController)
