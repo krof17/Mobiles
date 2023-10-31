@@ -5,4 +5,5 @@
     <string name="mecnu" />
     <string name="creatureDetail">creature detail</string>
     <string name="RaceList">RaceList</string>
+    <string name="SearchName">buscar_nombre</string>
 </resources>
