@@ -54,7 +54,7 @@ fun CharacterDetail(character: Character?, navController: NavController) {
         "Azog" -> R.drawable.azog
         "Shelob" -> R.drawable.shelob
         "Eru Ilúvatar" -> R.drawable.eru
-        else -> R.drawable.unknown
+        else -> R.drawable.desconocido
     }
     Column(
         modifier = Modifier
